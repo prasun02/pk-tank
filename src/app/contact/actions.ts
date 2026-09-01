@@ -1,39 +1,9 @@
 "use server";
 
 import "server-only";
-import { z } from "zod";
+import type { LeadFormState } from "@/app/contact/form-state";
+import { leadSchema } from "@/app/contact/validation";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
-
-const serviceTypes = [
-  "Business Software",
-  "SaaS / AI",
-  "Website / Portal",
-  "IT / Network",
-  "Technical Project",
-  "Product / Business Enablement",
-  "Managed Monthly Support",
-  "Not Sure Yet",
-] as const;
-
-const leadSchema = z.object({
-  name: z.string().trim().min(2, "Please enter your name.").max(80, "Name must be 80 characters or fewer."),
-  company: z.string().trim().max(120, "Company must be 120 characters or fewer."),
-  country: z.string().trim().max(80, "Country must be 80 characters or fewer."),
-  email: z.string().trim().email("Enter a valid email address.").max(160, "Email must be 160 characters or fewer."),
-  phone: z.string().trim().max(40, "Phone must be 40 characters or fewer."),
-  service_type: z.enum(serviceTypes, { error: "Choose a service type." }),
-  budget_range: z.string().trim().max(80, "Budget must be 80 characters or fewer."),
-  project_description: z.string().trim().min(20, "Please share at least 20 characters about the problem.").max(3000, "Project description must be 3,000 characters or fewer."),
-  website: z.string().max(0, "Invalid submission."),
-});
-
-export type LeadFormState = {
-  status: "idle" | "success" | "error";
-  message: string;
-  errors?: Record<string, string[]>;
-};
-
-export const initialLeadFormState: LeadFormState = { status: "idle", message: "" };
 
 function value(formData: FormData, key: string) {
   const entry = formData.get(key);
@@ -89,6 +59,7 @@ export async function submitLead(_previousState: LeadFormState, formData: FormDa
       budget_range: lead.budget_range || null,
       project_description: lead.project_description,
       source: "website",
+      status: "new",
     });
 
     if (error) throw error;

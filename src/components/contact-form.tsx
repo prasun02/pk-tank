@@ -2,7 +2,8 @@
 
 import { useActionState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { initialLeadFormState, submitLead } from "@/app/contact/actions";
+import { submitLead } from "@/app/contact/actions";
+import { initialLeadFormState } from "@/app/contact/form-state";
 
 const serviceChoices = ["Business Software", "SaaS / AI", "Website / Portal", "IT / Network", "Technical Project", "Product / Business Enablement", "Managed Monthly Support", "Not Sure Yet"];
 const budgetChoices = ["Under BDT 15,000", "BDT 15,000 – 40,000", "BDT 40,000 – 100,000", "BDT 100,000+", "Monthly support", "Need guidance"];
