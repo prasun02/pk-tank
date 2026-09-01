@@ -10,7 +10,11 @@ export function generateStaticParams() {
   return workItems.map((item) => ({ slug: item.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps<"/work/[slug]">): Promise<Metadata> {
+type WorkDetailPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: WorkDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
   const item = workItems.find((entry) => entry.slug === slug);
   if (!item) return { title: "Work Not Found" };
@@ -24,7 +28,7 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   };
 }
 
-export default async function WorkDetailPage({ params }: PageProps<"/work/[slug]">) {
+export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const { slug } = await params;
   const item = workItems.find((entry) => entry.slug === slug);
   if (!item) notFound();

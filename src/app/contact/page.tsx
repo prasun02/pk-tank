@@ -22,7 +22,11 @@ function mapService(value?: string | string[]) {
   return "";
 }
 
-export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
+type ContactPageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
   const query = await searchParams;
   const defaultService = mapService(query.service);
 
