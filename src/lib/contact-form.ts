@@ -1,3 +1,5 @@
+import type { ContactFormState } from "@/types/contact";
+
 export const serviceTypes = [
   "Business Software",
   "SaaS / AI",
@@ -11,20 +13,11 @@ export const serviceTypes = [
 
 export const budgetRanges = [
   "Under BDT 15,000",
-  "BDT 15,000 ? 40,000",
-  "BDT 40,000 ? 100,000",
+  "BDT 15,000 – 40,000",
+  "BDT 40,000 – 100,000",
   "BDT 100,000+",
   "Monthly support",
   "Need guidance",
 ] as const;
 
-export type LeadFormState = {
-  status: "idle" | "success" | "error";
-  message: string;
-  errors?: Record<string, string[]>;
-};
-
-export const initialLeadFormState: LeadFormState = {
-  status: "idle",
-  message: "",
-};
+export const initialContactFormState: ContactFormState = { status: "idle", message: "" };

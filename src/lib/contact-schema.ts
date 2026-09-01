@@ -1,8 +1,8 @@
 import "server-only";
 import { z } from "zod";
-import { serviceTypes } from "@/app/contact/form-state";
+import { serviceTypes } from "@/lib/contact-form";
 
-export const leadSchema = z.object({
+export const contactSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name.").max(80, "Name must be 80 characters or fewer."),
   company: z.string().trim().max(120, "Company must be 120 characters or fewer."),
   country: z.string().trim().max(80, "Country must be 80 characters or fewer."),

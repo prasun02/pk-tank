@@ -2,18 +2,15 @@
 
 import { useActionState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { submitLead } from "@/app/contact/actions";
-import { initialLeadFormState } from "@/app/contact/form-state";
-
-const serviceChoices = ["Business Software", "SaaS / AI", "Website / Portal", "IT / Network", "Technical Project", "Product / Business Enablement", "Managed Monthly Support", "Not Sure Yet"];
-const budgetChoices = ["Under BDT 15,000", "BDT 15,000 – 40,000", "BDT 40,000 – 100,000", "BDT 100,000+", "Monthly support", "Need guidance"];
+import { submitContact } from "@/actions/contact";
+import { budgetRanges, initialContactFormState, serviceTypes } from "@/lib/contact-form";
 
 function FieldError({ errors }: { errors?: string[] }) {
   return errors?.[0] ? <span className="field-error">{errors[0]}</span> : null;
 }
 
 export function ContactForm({ defaultService = "" }: { defaultService?: string }) {
-  const [state, formAction, pending] = useActionState(submitLead, initialLeadFormState);
+  const [state, formAction, pending] = useActionState(submitContact, initialContactFormState);
 
   if (state.status === "success") {
     return (
@@ -62,7 +59,7 @@ export function ContactForm({ defaultService = "" }: { defaultService?: string }
           <label htmlFor="service_type">Service type <span>*</span></label>
           <select id="service_type" name="service_type" required defaultValue={defaultService}>
             <option value="" disabled>Select a service</option>
-            {serviceChoices.map((choice) => <option value={choice} key={choice}>{choice}</option>)}
+            {serviceTypes.map((choice) => <option value={choice} key={choice}>{choice}</option>)}
           </select>
           <FieldError errors={state.errors?.service_type} />
         </div>
@@ -70,7 +67,7 @@ export function ContactForm({ defaultService = "" }: { defaultService?: string }
           <label htmlFor="budget_range">Budget range</label>
           <select id="budget_range" name="budget_range" defaultValue="">
             <option value="">Select a range (optional)</option>
-            {budgetChoices.map((choice) => <option value={choice} key={choice}>{choice}</option>)}
+            {budgetRanges.map((choice) => <option value={choice} key={choice}>{choice}</option>)}
           </select>
           <FieldError errors={state.errors?.budget_range} />
         </div>
@@ -83,7 +80,7 @@ export function ContactForm({ defaultService = "" }: { defaultService?: string }
       <div className="form-submit">
         <p>By submitting, you agree that PK-TANK may use these details to respond to your enquiry. See the <a href="/privacy">privacy notice</a>.</p>
         <button className="button" type="submit" disabled={pending}>
-          {pending ? "Sending…" : "Send Project Enquiry"} <ArrowRight aria-hidden="true" size={18} />
+          {pending ? "Sending..." : "Send Project Enquiry"} <ArrowRight aria-hidden="true" size={18} />
         </button>
       </div>
       {state.status === "error" ? <p className="form-message" role="alert">{state.message}</p> : null}
