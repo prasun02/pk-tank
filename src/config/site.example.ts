@@ -1,0 +1,20 @@
+export const siteConfig = {
+  name: "PK-TANK",
+  descriptor: "Business Technology & SaaS Solutions",
+  tagline: "Build Smarter. Work Better.",
+  supportLine: "Software • AI Automation • Managed IT • Technical Project Support",
+  email: "",
+  phone: "",
+  whatsapp: "",
+  locationLabel: "Bangladesh • Remote Worldwide",
+  nav: [
+    ["Home", "/"],
+    ["Solutions", "/solutions"],
+    ["Services", "/services"],
+    ["Work", "/work"],
+    ["Industries", "/industries"],
+    ["Pricing", "/pricing"],
+    ["About", "/about"],
+    ["Contact", "/contact"],
+  ],
+} as const;

@@ -1,0 +1,18 @@
+{
+  "brand": "PK-TANK",
+  "descriptor": "Business Technology & SaaS Solutions",
+  "tagline": "Build Smarter. Work Better.",
+  "support_line": "Software \u2022 AI Automation \u2022 Managed IT \u2022 Technical Project Support",
+  "focus": {
+    "digital_systems": 60,
+    "technical_support": 25,
+    "business_enablement": 10,
+    "creative": 5
+  },
+  "pillars": [
+    "Digital Business Systems",
+    "Managed IT & Technical Support",
+    "Technical Project Support",
+    "B2B Technology & Project Enablement"
+  ]
+}
