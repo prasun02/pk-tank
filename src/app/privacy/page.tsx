@@ -76,9 +76,8 @@ export default function PrivacyPage() {
         <p>Information that is no longer reasonably required may be deleted or anonymized.</p>
 
         <h2>7. Cookies and Analytics</h2>
-        <p>PK-TANK may use essential technologies required for website functionality, security and performance.</p>
-        <p>If analytics, advertising or other non-essential tracking technologies are introduced in the future, this Privacy Policy and any required cookie or consent mechanisms will be updated accordingly.</p>
-        <p>PK-TANK does not currently claim to use advertising cookies unless such services are specifically enabled.</p>
+        <p>PK-TANK uses essential technologies required for website functionality, security and performance.</p>
+        <p>PK-TANK does not use advertising cookies or non-essential analytics through this website.</p>
 
         <h2>8. External Links</h2>
         <p>The PK-TANK website may contain links to third-party websites, platforms, demonstrations or services.</p>
