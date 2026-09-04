@@ -1,14 +1,16 @@
-export function getPublicSiteUrl(): URL | null {
+﻿export function getPublicSiteUrl(): URL | null {
   const value = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
-  if (!value) return null;
+  if (!value) return new URL("https://pk-tank.com");
 
   try {
     const url = new URL(value);
-    if (!['http:', 'https:'].includes(url.protocol) || !url.hostname) return null;
+    if (!["http:", "https:"].includes(url.protocol) || !url.hostname) {
+      return new URL("https://pk-tank.com");
+    }
     return url;
   } catch {
-    return null;
+    return new URL("https://pk-tank.com");
   }
 }
 

@@ -29,7 +29,7 @@ export async function submitContact(
     return { status: "error", message: "Please check the highlighted fields and try again.", errors: parsed.error.flatten().fieldErrors };
   }
 
-  const { website: _website, ...lead } = parsed.data;
+  const lead = parsed.data;
 
   try {
     const { error } = await getSupabaseAdmin().schema("public").from("leads").insert({
