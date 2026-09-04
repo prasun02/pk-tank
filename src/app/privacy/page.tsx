@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         index="06"
       />
       <section className="section shell legal-content">
-        <p className="legal-updated">Effective date: 2 September 2026</p>
+        <p className="legal-updated">Effective date: 5 September 2026</p>
 
         <p>PK-TANK respects your privacy and is committed to handling personal information responsibly. This Privacy Policy explains what information we collect through pk-tank.com, why we collect it, how we use it, and the choices available to you.</p>
         <p>By using this website or submitting information through our contact form, you acknowledge the practices described in this policy.</p>
@@ -76,8 +76,9 @@ export default function PrivacyPage() {
         <p>Information that is no longer reasonably required may be deleted or anonymized.</p>
 
         <h2>7. Cookies and Analytics</h2>
-        <p>PK-TANK uses essential technologies required for website functionality, security and performance.</p>
-        <p>PK-TANK does not use advertising cookies or non-essential analytics through this website.</p>
+        <p>PK-TANK uses Vercel Web Analytics to understand general website usage, such as which pages are visited, referral sources, approximate geographic region, browser and operating-system information, and overall traffic patterns. We use this information to understand website performance and improve our services and content.</p>
+        <p>We do not intentionally send names, email addresses, phone numbers, project descriptions or other information submitted through the PK-TANK contact form to Web Analytics.</p>
+        <p>PK-TANK does not currently use advertising or remarketing analytics such as Google Ads tracking or Meta Pixel. If our analytics or tracking practices materially change, this Privacy Policy will be updated.</p>
 
         <h2>8. External Links</h2>
         <p>The PK-TANK website may contain links to third-party websites, platforms, demonstrations or services.</p>
