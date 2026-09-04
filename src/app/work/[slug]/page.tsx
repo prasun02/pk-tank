@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, CheckCircle2, ImageOff } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/cta-band";
+import { ProjectScreenshots } from "@/components/work/project-screenshots";
 import { workItems } from "@/data/site-content";
+import { workScreenshots } from "@/data/work-screenshots";
 import { canonical } from "@/lib/site-url";
 
 export function generateStaticParams() {
   return workItems.map((item) => ({ slug: item.slug }));
 }
 
-type WorkDetailPageProps = {
-  params: Promise<{ slug: string }>;
-};
+type WorkDetailPageProps = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: WorkDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -32,6 +32,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const { slug } = await params;
   const item = workItems.find((entry) => entry.slug === slug);
   if (!item) notFound();
+  const screenshots = workScreenshots[item.slug] ?? [];
 
   return (
     <main id="main-content">
@@ -53,7 +54,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
         <aside>
           <p className="kicker">Case study</p>
           <nav aria-label="Case study sections">
-            {["Overview", "Problem", "Context", "Role", "Solution / Work", "Deliverables / Features", "Technologies / Tools", "Business Benefit", "Media"].map((label) => (
+            {["Overview", "Problem", "Context", "Role", "Solution / Work", "Deliverables / Features", "Product Screens", "Technologies / Tools", "Business Benefit"].map((label) => (
               <a href={`#${label.toLowerCase().replaceAll(" ", "-").replaceAll("/", "")}`} key={label}>{label}</a>
             ))}
           </nav>
@@ -68,15 +69,16 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
             <p className="case-label">Deliverables / Features</p><h2>What the concept includes</h2>
             <div className="case-checks">{item.deliverables.map((deliverable) => <div key={deliverable}><CheckCircle2 aria-hidden="true" size={18} />{deliverable}</div>)}</div>
           </section>
+          <section id="product-screens">
+            <p className="case-label">Interface &amp; Workflow</p><h2>Product Screens</h2>
+            <p className="screens-intro">From day-to-day work to management visibility, these screens show how the system turns an operational problem into a clear, connected workflow.</p>
+            <ProjectScreenshots screenshots={screenshots} />
+          </section>
           <section id="technologies--tools">
             <p className="case-label">Technologies / Tools</p><h2>Technology approach</h2>
             <div className="tool-tags">{item.tools.map((tool) => <span key={tool}>{tool}</span>)}</div>
           </section>
           <section id="business-benefit"><p className="case-label">Business Benefit</p><h2>Expected practical value</h2><p>{item.benefit}</p><p className="scope-note">This is a qualitative project benefit, not a published or verified performance outcome.</p></section>
-          <section id="media">
-            <p className="case-label">Media</p><h2>Project evidence is reviewed before publishing</h2>
-            <div className="media-placeholder"><ImageOff aria-hidden="true" /><p>Interface captures or supporting documents will be added only when they are verified, publication-ready and free of confidential information.</p></div>
-          </section>
           <div className="next-project"><p>Have a similar workflow or support challenge?</p><Link className="text-link" href="/contact">Discuss your project <ArrowRight aria-hidden="true" size={17} /></Link></div>
         </article>
       </section>
