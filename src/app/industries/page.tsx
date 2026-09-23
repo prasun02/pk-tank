@@ -1,5 +1,5 @@
-import { Building2, CircuitBoard, GraduationCap, HeartPulse, MonitorCog, PackageOpen, Scissors, Store } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
+import { industryIcons } from "@/components/industry-icons";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { industries } from "@/data/site-content";
@@ -10,8 +10,6 @@ export const metadata = pageMetadata(
   "PK-TANK supports retail, tailoring, technology, healthcare SMEs, education, distribution, project businesses and remote SaaS companies.",
   "/industries",
 );
-
-const industryIcons = [Store, Scissors, CircuitBoard, HeartPulse, GraduationCap, PackageOpen, Building2, MonitorCog];
 
 export default function IndustriesPage() {
   return (

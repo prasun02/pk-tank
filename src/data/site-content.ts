@@ -1,27 +1,89 @@
-export const services = [
+export type ServiceId =
+  | "custom-business-software"
+  | "saas-application-development"
+  | "ai-workflow-automation"
+  | "managed-it"
+  | "technical-project-support"
+  | "business-enablement";
+
+export type ContactServiceType =
+  | "Business Software"
+  | "SaaS / AI"
+  | "IT / Network"
+  | "Technical Project"
+  | "Product / Business Enablement";
+
+export type Service = {
+  id: ServiceId;
+  number: string;
+  title: string;
+  group: "build" | "run";
+  summary: string;
+  outcome: string;
+  items: readonly string[];
+  contactService: ContactServiceType;
+};
+
+// The five core services lead the site; B2B enablement is offered alongside them.
+export const coreServices: readonly Service[] = [
   {
-    id: "digital-business-systems",
+    id: "custom-business-software",
     number: "01",
-    title: "Digital Business Systems",
-    shortTitle: "Digital Systems",
-    description:
-      "Software, SaaS and automation designed around the way your people, information and decisions need to move.",
+    title: "Custom Business Software",
+    group: "build",
+    summary: "Workflow systems for orders, stock, HR, service and approvals, shaped around how your team already works.",
+    outcome: "One structured record replaces paper, disconnected spreadsheets and scattered messages.",
     items: [
-      "Business software and workflow systems",
-      "SaaS setup, configuration and onboarding",
-      "AI knowledge and support automation",
-      "Company websites and customer portals",
+      "Customer, order and inventory systems",
+      "Requisition and approval workflows",
       "Dashboards, reporting and databases",
+      "Company websites and customer portals",
+      "Service / RMA and HR workflows",
       "Testing, documentation and training",
     ],
+    contactService: "Business Software",
+  },
+  {
+    id: "saas-application-development",
+    number: "02",
+    title: "SaaS Application Development",
+    group: "build",
+    summary: "Web platforms with users, roles and dashboards, plus setup and onboarding for SaaS products you already use.",
+    outcome: "Teams and customers work in one shared, role-aware platform instead of separate tools.",
+    items: [
+      "Multi-user web platforms with roles",
+      "Admin panels and role-based portals",
+      "SaaS setup, configuration and onboarding",
+      "Access, data preparation and testing",
+      "Troubleshooting and user documentation",
+      "Training for day-to-day users",
+    ],
+    contactService: "SaaS / AI",
+  },
+  {
+    id: "ai-workflow-automation",
+    number: "03",
+    title: "AI & Workflow Automation",
+    group: "build",
+    summary: "AI-assisted support, knowledge search and automated steps that cut repetitive work, with human follow-up kept in place.",
+    outcome: "Repeat questions and routine steps become consistent, faster and easier to hand over.",
+    items: [
+      "Knowledge and support assistants",
+      "FAQ automation and document search",
+      "Workflow integration between tools",
+      "Guardrailed AI-assisted responses",
+      "Clear escalation to people",
+      "Support knowledge organization",
+    ],
+    contactService: "SaaS / AI",
   },
   {
     id: "managed-it",
-    number: "02",
+    number: "04",
     title: "Managed IT & Technical Support",
-    shortTitle: "Managed IT",
-    description:
-      "Practical remote support for users, networks and SaaS products—structured to reduce interruptions and repeat issues.",
+    group: "run",
+    summary: "Remote support for users, networks and SaaS products, structured to reduce interruptions and repeat issues.",
+    outcome: "Day-to-day technology problems get diagnosed, fixed and documented instead of recurring.",
     items: [
       "Remote user and computer support",
       "Router, Wi-Fi and LAN troubleshooting",
@@ -30,14 +92,15 @@ export const services = [
       "SaaS and technical product support",
       "Issue testing and support documentation",
     ],
+    contactService: "IT / Network",
   },
   {
     id: "technical-project-support",
-    number: "03",
+    number: "05",
     title: "Technical Project Support",
-    shortTitle: "Project Support",
-    description:
-      "Research, comparison, documentation and reporting that give technical projects a clearer path from question to handover.",
+    group: "run",
+    summary: "Research, comparison, BOQ assistance and documentation that take technical projects from question to handover.",
+    outcome: "Projects gain a clear evidence trail, structured costing and complete handover documents.",
     items: [
       "Technical research and vendor comparison",
       "BOQ and structured costing assistance",
@@ -46,63 +109,151 @@ export const services = [
       "IoT and monitoring software prototypes",
       "Structured troubleshooting reports",
     ],
+    contactService: "Technical Project",
+  },
+];
+
+export const enablementService: Service = {
+  id: "business-enablement",
+  number: "+",
+  title: "B2B Technology & Project Enablement",
+  group: "run",
+  summary: "Commercial and operational support for introducing technical products and organizing complex opportunities.",
+  outcome: "Technical products reach the market with documentation, research and support readiness in place.",
+  items: [
+    "Technical product launch support",
+    "Market and dealer/channel research",
+    "Proposal and product documentation",
+    "Tender-document organization",
+    "Quotation and costing support",
+    "Project coordination and support design",
+  ],
+  contactService: "Product / Business Enablement",
+};
+
+export const serviceGroups = [
+  { id: "build", label: "Build digital systems", text: "Software, platforms and automation for how work moves." },
+  { id: "run", label: "Run & deliver technology", text: "Support and project capacity that keeps work moving." },
+] as const;
+
+export const allServices: readonly Service[] = [...coreServices, enablementService];
+
+export function getService(id: ServiceId) {
+  return allServices.find((service) => service.id === id)!;
+}
+
+// Challenge → how PK-TANK helps → which service covers it.
+export const problems: readonly { title: string; symptom: string; help: string; serviceId: ServiceId }[] = [
+  {
+    title: "Too much manual work",
+    symptom: "Orders, requests and records live in paper, spreadsheets and chat threads.",
+    help: "A structured workflow system with one shared record for every order, request or job.",
+    serviceId: "custom-business-software",
   },
   {
-    id: "business-enablement",
-    number: "04",
-    title: "B2B Technology & Project Enablement",
-    shortTitle: "Business Enablement",
-    description:
-      "Commercial and operational support for introducing technical products and organizing the work around complex opportunities.",
+    title: "Poor operational visibility",
+    symptom: "No clear view of where orders, stock, service, people or projects stand.",
+    help: "Role-appropriate dashboards and reports built directly from operational records.",
+    serviceId: "custom-business-software",
+  },
+  {
+    title: "Teams need one shared platform",
+    symptom: "Staff, partners or customers each work in separate tools with no common access.",
+    help: "A web platform with users, roles and dashboards, or setup of the SaaS you already use.",
+    serviceId: "saas-application-development",
+  },
+  {
+    title: "Repetitive support workload",
+    symptom: "The same questions are answered again and again from memory.",
+    help: "Searchable knowledge and AI-assisted guidance, with uncertain issues escalated to people.",
+    serviceId: "ai-workflow-automation",
+  },
+  {
+    title: "IT and network interruptions",
+    symptom: "User, router, Wi-Fi, LAN or SaaS issues keep stalling daily work.",
+    help: "Remote diagnosis with structured follow-through, documented so issues stop repeating.",
+    serviceId: "managed-it",
+  },
+  {
+    title: "Disorganized technical projects",
+    symptom: "Research, costing and documents are scattered across people and files.",
+    help: "Research, vendor comparison, BOQ assistance, progress reporting and handover documents.",
+    serviceId: "technical-project-support",
+  },
+  {
+    title: "Difficult product launches",
+    symptom: "A technical product lacks documentation, market research or support readiness.",
+    help: "Product documentation, market and channel research, and support-workflow planning.",
+    serviceId: "business-enablement",
+  },
+];
+
+export const solutionGroups = [
+  {
+    id: "operations",
+    title: "Operations systems",
+    text: "Structured records and workflows for the core of the business.",
     items: [
-      "Technical product launch support",
-      "Market and dealer/channel research",
-      "Proposal and product documentation",
-      "Tender-document organization",
-      "Quotation and costing support",
-      "Project coordination and support design",
+      ["Customer & Order", "Organize customer records, quotations, orders, status and follow-up."],
+      ["Inventory & Stock", "Track products, movement, levels and operational stock visibility."],
+      ["HR & Employee", "Structure employee records, attendance, leave and essential HR workflows."],
+      ["Service / RMA", "Manage support intake, service status, warranty and return workflows."],
+      ["Requisition & Approval", "Move requests through role-based review, approval and fulfillment."],
+      ["Reporting Dashboards", "Turn operational records into focused reports and decision views."],
+    ],
+  },
+  {
+    id: "support",
+    title: "AI & technical support",
+    text: "Faster answers and fewer interruptions for teams and customers.",
+    items: [
+      ["AI Support", "Build searchable knowledge and guided assistance for customers or internal teams."],
+      ["Managed IT", "Combine day-to-day remote support, issue documentation and small improvements."],
+    ],
+  },
+  {
+    id: "projects",
+    title: "Projects & launches",
+    text: "Extra technical capacity when a project or product needs structure.",
+    items: [
+      ["Technical Project Desk", "Add research, comparison, BOQ and documentation capacity when needed."],
+      ["Product Launch Support", "Coordinate research, documentation and support planning for technical products."],
     ],
   },
 ] as const;
 
-export const problems = [
-  {
-    title: "Too much manual work",
-    text: "Replace paper, disconnected spreadsheets and scattered messages with a structured workflow.",
-  },
-  {
-    title: "Poor operational visibility",
-    text: "Bring orders, stock, service, people and projects into clear role-appropriate dashboards.",
-  },
-  {
-    title: "Repetitive support workload",
-    text: "Turn recurring questions into usable knowledge, guided support and sensible automation.",
-  },
-  {
-    title: "IT and network interruptions",
-    text: "Diagnose day-to-day user, router, Wi-Fi, LAN and SaaS issues with structured follow-through.",
-  },
-  {
-    title: "Disorganized technical projects",
-    text: "Create order through research, comparison, documentation, reporting and handover support.",
-  },
-  {
-    title: "Difficult product launches",
-    text: "Prepare product information, research, support workflows and channel activity for a stronger rollout.",
-  },
+export const processSteps = [
+  ["Discover", "Clarify the problem, users, current process, constraints and evidence."],
+  ["Shape", "Define a practical scope, workflow and delivery path before complexity grows."],
+  ["Build", "Implement the system, support structure or project deliverables in focused stages."],
+  ["Improve", "Review usage, resolve friction and prioritize the next useful improvement."],
 ] as const;
 
-export const solutions = [
-  ["Customer & Order", "Organize customer records, quotations, orders, status and follow-up."],
-  ["Inventory & Stock", "Track products, movement, levels and operational stock visibility."],
-  ["HR & Employee", "Structure employee records, attendance, leave and essential HR workflows."],
-  ["Service / RMA", "Manage support intake, service status, warranty and return workflows."],
-  ["Requisition & Approval", "Move requests through role-based review, approval and fulfillment."],
-  ["AI Support", "Build searchable knowledge and guided assistance for customers or internal teams."],
-  ["Reporting Dashboards", "Turn operational records into focused reports and decision views."],
-  ["Managed IT", "Combine day-to-day remote support, issue documentation and small improvements."],
-  ["Technical Project Desk", "Add research, comparison, BOQ and documentation capacity when needed."],
-  ["Product Launch Support", "Coordinate research, documentation and support planning for technical products."],
+export const faqs = [
+  {
+    question: "Do we need a technical specification before contacting PK-TANK?",
+    answer: "No. Describe the current process, the people involved, the recurring problem and the outcome you want. Requirements and responsibilities are clarified before any proposal.",
+  },
+  {
+    question: "Do you build new systems or improve what we already use?",
+    answer: "Both. PK-TANK can scope a focused new build, configure an existing SaaS product, connect a repeatable process or improve a system already in use. The recommendation depends on your workflow, data, integrations and support needs.",
+  },
+  {
+    question: "Is AI used to replace our support team?",
+    answer: "No. AI assists with finding knowledge and guiding routine answers. Uncertain or sensitive issues stay visible for human follow-up.",
+  },
+  {
+    question: "Can you keep supporting us after launch?",
+    answer: "Yes. Managed monthly support can combine website and software care, SaaS support, user help, basic network troubleshooting, reports and small improvements.",
+  },
+  {
+    question: "How is pricing decided?",
+    answer: "Websites and focused business systems have published starting prices. Complex or technical work is quoted after scoping, because it needs a clear scope before it needs a price.",
+  },
+  {
+    question: "Do you work with clients outside Bangladesh?",
+    answer: "Yes. PK-TANK is remote-first: based in Bangladesh and working with clients remotely worldwide.",
+  },
 ] as const;
 
 export type WorkCategory =
