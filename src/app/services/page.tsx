@@ -21,7 +21,6 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Five core services across build, support and delivery."
         description="Software, SaaS platforms and automation to build with. Managed IT and technical project support to run and deliver. One partner with a clear line of responsibility."
-        index="02"
         cta
       />
 
@@ -30,7 +29,6 @@ export default function ServicesPage() {
         <div className="shell">
           <SectionHeading
             variant="compact"
-            index="01"
             kicker="Service overview"
             title="Find the right service at a glance."
             description="Each card jumps to its details: what’s included, why it matters and when it is a good fit."

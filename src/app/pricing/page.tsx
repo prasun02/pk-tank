@@ -21,7 +21,6 @@ export default function PricingPage() {
         eyebrow="Pricing"
         title="Clear starting points. Scope-aware proposals."
         description="Use these packages as planning ranges. Final pricing depends on workflow, risk, integrations, data, service level and responsibility."
-        index="04"
         cta
       />
       <section className="section shell">
@@ -46,7 +45,7 @@ export default function PricingPage() {
       </section>
       <section className="section section-navy">
         <div className="shell">
-          <SectionHeading index="02" kicker="Quote-based services" title="Complex work needs a scope before it needs a price." />
+          <SectionHeading kicker="Quote-based services" title="Complex work needs a scope before it needs a price." />
           <div className="quote-grid">
             {quoteServices.map((service, index) => (
               <article key={service}><span>0{index + 1}</span><h3>{service}</h3><p>Quoted after a focused discussion of needs, inputs, dependencies and responsibility.</p></article>

@@ -18,12 +18,10 @@ export default function IndustriesPage() {
         eyebrow="Industries"
         title="Technology shaped for businesses where work must keep moving."
         description="Industry context matters. PK-TANK starts with the actual users, records, decisions, equipment and support expectations behind each workflow."
-        index="03"
         cta
       />
       <section className="section shell">
         <SectionHeading
-          index="01"
           kicker="Where we can help"
           title="Focused systems and technical capacity for growing operational teams."
         />

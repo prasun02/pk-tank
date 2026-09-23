@@ -16,7 +16,6 @@ export default function WorkPage() {
         eyebrow="Work"
         title="Clear project stories. Honest status. No invented outcomes."
         description="This collection separates PK-TANK projects, prototypes, demonstrations, internal products and the founder’s earlier experience so the context remains accurate."
-        index="07"
         cta
       />
       <section className="section shell">

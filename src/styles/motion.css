@@ -1,0 +1,59 @@
+/* Motion: scroll reveal, interior hero intro and shared hover refinements.
+   Kept short and small in distance; everything is disabled for reduced motion. */
+
+:root {
+  --reveal-distance: 16px;
+  --reveal-dur: 640ms;
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; translate: 0 var(--reveal-distance); }
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* Set by <ScrollReveal /> only on below-the-fold elements, so no-JS renders stay visible.
+   `translate` composes with hover `transform` lifts, and `backwards` fill hands control
+   back to the element's own transitions once the reveal ends. */
+[data-reveal="pending"] { opacity: 0; }
+[data-reveal="shown"] { animation: reveal-up var(--reveal-dur) var(--ease-out) var(--reveal-delay, 0ms) backwards; }
+
+/* Interior page hero: soft entrance on load (CSS only) */
+.page-hero-grid > div:first-child { animation: reveal-up 700ms var(--ease-out) both; }
+.page-hero-grid > .page-hero-side { animation: reveal-up 700ms 120ms var(--ease-out) both; }
+.case-hero-grid > div:first-child { animation: reveal-up 700ms var(--ease-out) both; }
+
+/* Hover: light lift and border tint for cards that were previously static */
+.pricing-card, .solution-group, .experience-panel, .contact-form {
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out);
+}
+.pricing-card:hover { border-color: #b9cbe6; box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.pricing-featured:hover { border-color: var(--blue); box-shadow: 0 26px 60px rgba(29, 95, 255, 0.18); }
+.solution-group:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(157, 189, 255, 0.28); }
+
+/* Tile grids (1px dividers) tint instead of lifting so the grid lines stay intact */
+.industry-grid article, .values-grid article, .quote-grid article, .experience-grid article, .mission-grid article {
+  transition: background-color var(--dur) var(--ease-out);
+}
+.industry-grid article:hover, .values-grid article:hover, .mission-grid article:hover { background: #f8fbff; }
+.quote-grid article:hover { background: #11305c; }
+.experience-grid article:hover { background: #153766; }
+.industry-grid article > div svg { transition: transform var(--dur) var(--ease-out); }
+.industry-grid article:hover > div svg { transform: translateY(-2px); }
+
+.faq-list details:hover { border-color: var(--color-blue-100); }
+.industry-chips a { transition: color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
+.industry-chips a:hover { box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.filter-row button { transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease, border-color var(--dur-fast) ease; }
+.process-step-dot { transition: color var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out); }
+.process-steps li:hover .process-step-dot { color: #ffffff; background: var(--color-blue-600); border-color: var(--color-blue-600); }
+.footer-column a { transition: color var(--dur-fast) ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; animation: none !important; }
+  .page-hero-grid > *, .case-hero-grid > div:first-child { animation: none; }
+  .pricing-card:hover, .industry-chips a:hover { transform: none; }
+}
+
+@media print {
+  [data-reveal] { opacity: 1 !important; animation: none !important; }
+}

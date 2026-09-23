@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
 type SectionHeadingProps = {
-  index?: string;
   kicker: string;
   title: string;
   description?: string;
@@ -10,12 +9,12 @@ type SectionHeadingProps = {
   action?: ReactNode;
 };
 
-export function SectionHeading({ index = "01", kicker, title, description, variant = "default", action }: SectionHeadingProps) {
+export function SectionHeading({ kicker, title, description, variant = "default", action }: SectionHeadingProps) {
   if (variant === "compact") {
     return (
       <div className="section-heading-compact">
         <div>
-          <p className="kicker"><span className="section-number">{index}</span>{kicker}</p>
+          <p className="kicker">{kicker}</p>
           <h2>{title}</h2>
           {description ? <p className="section-description">{description}</p> : null}
         </div>
@@ -27,7 +26,6 @@ export function SectionHeading({ index = "01", kicker, title, description, varia
   return (
     <div className="section-heading">
       <div>
-        <span className="section-number">{index}</span>
         <p className="kicker">{kicker}</p>
       </div>
       <div>

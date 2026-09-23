@@ -5,11 +5,10 @@ type PageHeroProps = {
   eyebrow: string;
   title: string;
   description: string;
-  index?: string;
   cta?: boolean;
 };
 
-export function PageHero({ eyebrow, title, description, index = "PK", cta = false }: PageHeroProps) {
+export function PageHero({ eyebrow, title, description, cta = false }: PageHeroProps) {
   return (
     <section className="page-hero">
       <div className="shell page-hero-grid">
@@ -18,7 +17,6 @@ export function PageHero({ eyebrow, title, description, index = "PK", cta = fals
           <h1>{title}</h1>
         </div>
         <div className="page-hero-side">
-          <span className="page-index">{index}</span>
           <p>{description}</p>
           {cta ? (
             <Link className="text-link" href="/contact">
