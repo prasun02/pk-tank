@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Blocks,
   Bot,
-  CheckCircle2,
   CloudCog,
   FileSearch,
   Gauge,
@@ -14,11 +13,10 @@ import {
   Workflow,
 } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
+import { HomeHero } from "@/components/home/home-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { WorkCard } from "@/components/work-card";
 import { industries, pastExperience, problems, services, solutions, workItems } from "@/data/site-content";
-
-const capabilities = ["Software & SaaS", "AI Automation", "Managed IT", "Technical Project Support"];
 
 const systemCards = [
   { icon: Blocks, title: "Connected workflows", text: "Customers, orders, stock and approvals in one practical system." },
@@ -30,62 +28,7 @@ const systemCards = [
 export default function HomePage() {
   return (
     <main id="main-content">
-      <section className="hero">
-        <div className="hero-grid shell">
-          <div className="hero-copy">
-            <div className="eyebrow"><span /> Business Technology &amp; SaaS Solutions</div>
-            <h1>Technology That Connects <em>Business, Software</em> &amp; Technical Operations</h1>
-            <p>
-              PK-TANK helps growing businesses digitize operations, automate repetitive work, solve IT problems
-              and manage technology projects with practical software and technical support.
-            </p>
-            <div className="hero-actions">
-              <Link className="button" href="/contact">
-                Discuss Your Project <ArrowRight aria-hidden="true" size={18} />
-              </Link>
-              <Link className="button button-secondary" href="/solutions">
-                Explore Solutions
-              </Link>
-            </div>
-            <div className="hero-proof">
-              <CheckCircle2 aria-hidden="true" size={18} />
-              <span>Remote-first support for local and international businesses</span>
-            </div>
-          </div>
-
-          <div className="operations-panel" aria-label="Connected operations overview">
-            <div className="panel-topline">
-              <span>Connected operations</span>
-              <span className="live-pill"><i /> Operational</span>
-            </div>
-            <div className="system-map">
-              <div className="core-node">
-                <span>PK</span>
-                <strong>Business<br />Core</strong>
-              </div>
-              {systemCards.map(({ icon: Icon, title }, index) => (
-                <div className={`map-node node-${index + 1}`} key={title}>
-                  <Icon aria-hidden="true" size={18} />
-                  <span>{title}</span>
-                </div>
-              ))}
-            </div>
-            <div className="panel-metrics">
-              <div><span>01</span><p>Plan the right system</p></div>
-              <div><span>02</span><p>Build &amp; connect</p></div>
-              <div><span>03</span><p>Support &amp; improve</p></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="capability-strip" aria-label="Core capabilities">
-        <div className="shell capability-row">
-          {capabilities.map((capability, index) => (
-            <div key={capability}><span>0{index + 1}</span>{capability}</div>
-          ))}
-        </div>
-      </section>
+      <HomeHero />
 
       <section className="intro-section shell">
         <SectionHeading

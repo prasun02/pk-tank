@@ -1,0 +1,103 @@
+/* PK-TANK design tokens. Legacy aliases at the end keep existing page styles working. */
+:root {
+  /* Navy / blue brand scale */
+  --color-navy-950: #050f22;
+  --color-navy-900: #0a1d3a;
+  --color-navy-850: #0d2447;
+  --color-navy-800: #10294e;
+  --color-navy-700: #1a3a68;
+  --color-blue-700: #1448d6;
+  --color-blue-600: #1d5fff;
+  --color-blue-500: #3d7bff;
+  --color-blue-400: #6b9bff;
+  --color-blue-300: #9dbdff;
+  --color-blue-100: #dbe7ff;
+  --color-blue-50: #eef4ff;
+  --color-cyan-400: #2ec8e8;
+  --color-cyan-300: #7adcf0;
+
+  /* Slate scale */
+  --color-slate-900: #0f1b2d;
+  --color-slate-800: #1f2937;
+  --color-slate-700: #344054;
+  --color-slate-600: #475467;
+  --color-slate-500: #667085;
+  --color-slate-400: #98a2b3;
+  --color-slate-300: #c6d3e3;
+  --color-slate-200: #dbe4f0;
+  --color-slate-100: #eef2f7;
+  --color-slate-50: #f6f8fb;
+
+  --color-success: #16a36a;
+  --color-danger: #bd2929;
+
+  /* Semantic roles */
+  --text-strong: var(--color-navy-900);
+  --text: var(--color-slate-800);
+  --text-muted: var(--color-slate-500);
+  --text-on-dark: #ffffff;
+  --text-on-dark-muted: #b4c3d9;
+  --text-on-dark-subtle: #93a6c4;
+  --surface: #ffffff;
+  --surface-muted: #f4f7fb;
+  --surface-dark: var(--color-navy-900);
+  --surface-deep: var(--color-navy-950);
+  --border: var(--color-slate-200);
+  --border-strong: var(--color-slate-300);
+  --border-on-dark: rgba(255, 255, 255, 0.1);
+  --border-on-dark-strong: rgba(255, 255, 255, 0.18);
+  --focus-ring: #4d8dff;
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-display: clamp(2.25rem, 1.35rem + 3.4vw, 4.25rem);
+  --text-h2: clamp(1.75rem, 1.25rem + 1.9vw, 2.75rem);
+  --text-h3: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --leading-tight: 1.08;
+  --leading-snug: 1.25;
+  --leading-body: 1.65;
+
+  /* Layout */
+  --container: 1200px;
+  --container-wide: 1320px;
+  --container-narrow: 800px;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+  --section-space: clamp(4rem, 2.75rem + 5.5vw, 7.5rem);
+  --section-space-sm: clamp(3rem, 2.25rem + 3.5vw, 5rem);
+  --header-h: 64px;
+
+  /* Shape and depth */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(10, 29, 58, 0.05), 0 1px 3px rgba(10, 29, 58, 0.07);
+  --shadow-md: 0 12px 28px -12px rgba(10, 29, 58, 0.22);
+  --shadow-lg: 0 32px 64px -24px rgba(3, 10, 25, 0.6);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur: 220ms;
+
+  /* Legacy aliases used by existing page styles */
+  --navy: var(--color-navy-900);
+  --navy-2: var(--color-navy-800);
+  --blue: var(--color-blue-600);
+  --bright-blue: #007aff;
+  --charcoal: var(--color-slate-800);
+  --muted: var(--color-slate-500);
+  --line: var(--color-slate-200);
+  --wash: var(--surface-muted);
+  --white: #ffffff;
+}
+
+@media (min-width: 1024px) {
+  :root { --header-h: 72px; }
+}
