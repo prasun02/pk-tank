@@ -3,11 +3,11 @@ import Link from "next/link";
 import { ArrowRight, Check, CircleCheck, ClipboardList, Cloud, Headset, LayoutDashboard, Workflow } from "lucide-react";
 
 const offerings = [
-  { icon: LayoutDashboard, title: "Business Software", text: "Workflow systems for orders, stock, HR and approvals" },
-  { icon: Cloud, title: "SaaS Applications", text: "Web platforms with users, roles and dashboards" },
-  { icon: Workflow, title: "AI Automation", text: "AI-assisted support and workflow automation" },
-  { icon: Headset, title: "Managed IT", text: "Remote user, network and SaaS support" },
-  { icon: ClipboardList, title: "Technical Project Support", text: "Research, BOQ, documentation and handover" },
+  { icon: LayoutDashboard, title: "Business Software", text: "Workflow systems for orders, stock, HR and approvals", target: "custom-business-software" },
+  { icon: Cloud, title: "SaaS Applications", text: "Web platforms with users, roles and dashboards", target: "saas-application-development" },
+  { icon: Workflow, title: "AI Automation", text: "AI-assisted support and workflow automation", target: "ai-workflow-automation" },
+  { icon: Headset, title: "Managed IT", text: "Remote user, network and SaaS support", target: "managed-it-support" },
+  { icon: ClipboardList, title: "Technical Project Support", text: "Research, BOQ, documentation and handover", target: "technical-project-support" },
 ] as const;
 
 // Mirrors the approval-to-receiving flow shown in the CSP requisition project screens.
@@ -99,13 +99,15 @@ export function HomeHero() {
         <div className="shell">
           <h2 className="sr-only">What PK-TANK provides</h2>
           <ul>
-            {offerings.map(({ icon: Icon, title, text }) => (
+            {offerings.map(({ icon: Icon, title, text, target }) => (
               <li key={title}>
-                <span className="icon-tile icon-tile-dark"><Icon aria-hidden="true" size={19} /></span>
-                <span>
-                  <strong>{title}</strong>
-                  <span>{text}</span>
-                </span>
+                <a href={`#service-${target}`}>
+                  <span className="icon-tile icon-tile-dark"><Icon aria-hidden="true" size={19} /></span>
+                  <span>
+                    <strong>{title}</strong>
+                    <span>{text}</span>
+                  </span>
+                </a>
               </li>
             ))}
           </ul>

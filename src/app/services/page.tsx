@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, ClipboardList, Handshake, Headset, LayoutDashboard, ShieldCheck } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { services } from "@/data/site-content";
@@ -11,6 +11,8 @@ export const metadata = pageMetadata(
   "/services",
 );
 
+const serviceIcons = [LayoutDashboard, Headset, ClipboardList, Handshake];
+
 export default function ServicesPage() {
   return (
     <main id="main-content">
@@ -21,6 +23,21 @@ export default function ServicesPage() {
         index="02"
         cta
       />
+      <nav className="shell service-index" aria-label="Services on this page">
+        <ul>
+          {services.map((service, index) => {
+            const Icon = serviceIcons[index];
+            return (
+              <li key={service.id}>
+                <a href={`#${service.id}`}>
+                  <span className="icon-tile"><Icon aria-hidden="true" size={20} /></span>
+                  <span><strong>{service.title}</strong><span>{service.items.slice(0, 2).join(" · ")}</span></span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
       <section className="service-sections">
         {services.map((service, serviceIndex) => (
           <article className="service-section" id={service.id} key={service.id}>

@@ -1,212 +1,34 @@
-import Link from "next/link";
-import {
-  ArrowRight,
-  Blocks,
-  Bot,
-  CloudCog,
-  FileSearch,
-  Gauge,
-  Headphones,
-  Layers3,
-  Network,
-  PackageCheck,
-  Workflow,
-} from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
+import { ChallengeExplorer } from "@/components/home/challenge-explorer";
 import { HomeHero } from "@/components/home/home-hero";
-import { SectionHeading } from "@/components/section-heading";
-import { WorkCard } from "@/components/work-card";
-import { industries, pastExperience, problems, services, solutions, workItems } from "@/data/site-content";
-
-const systemCards = [
-  { icon: Blocks, title: "Connected workflows", text: "Customers, orders, stock and approvals in one practical system." },
-  { icon: Bot, title: "AI-assisted support", text: "Structured knowledge and automation for faster, repeatable answers." },
-  { icon: Network, title: "Technical operations", text: "Remote IT, network and product support that keeps work moving." },
-  { icon: CloudCog, title: "Project enablement", text: "Research, documentation and coordination for technical delivery." },
-];
+import { ProcessSteps } from "@/components/home/process-steps";
+import { SelectedProjects } from "@/components/home/selected-projects";
+import { ServicesOverview } from "@/components/home/services-overview";
+import { SupportAndIndustries } from "@/components/home/support-industries";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export default function HomePage() {
   return (
     <main id="main-content">
       <HomeHero />
+      <ServicesOverview />
 
-      <section className="intro-section shell">
-        <SectionHeading
-          index="01"
-          kicker="One partner, connected capability"
-          title="Practical technology, built around how your business actually works."
-        />
-        <div className="system-card-grid">
-          {systemCards.map(({ icon: Icon, title, text }) => (
-            <article className="system-card" key={title}>
-              <Icon aria-hidden="true" size={24} />
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section section-muted">
+      <section className="home-section home-section-muted" aria-labelledby="challenges-heading">
         <div className="shell">
-          <SectionHeading
-            index="02"
-            kicker="Problems we help organize"
-            title="When operational friction becomes a daily cost, the right system creates room to work."
+          <SectionHeader
+            id="challenges-heading"
+            eyebrow="How we help"
+            title="Common business problems, and how PK-TANK solves them"
+            lead="Choose the challenge that sounds familiar to see what changes and which systems are typically involved."
+            action={{ label: "Explore all solutions", href: "/solutions" }}
           />
-          <div className="problem-grid">
-            {problems.map((problem, index) => (
-              <article className="problem-card" key={problem.title}>
-                <span>0{index + 1}</span>
-                <h3>{problem.title}</h3>
-                <p>{problem.text}</p>
-              </article>
-            ))}
-          </div>
+          <ChallengeExplorer />
         </div>
       </section>
 
-      <section className="section shell">
-        <SectionHeading
-          index="03"
-          kicker="Four service pillars"
-          title="Software leads. Technical support and project execution complete the picture."
-          description="PK-TANK brings digital systems, day-to-day technology support and project enablement into one practical service structure."
-        />
-        <div className="pillar-list">
-          {services.map((service) => (
-            <article id={service.id} key={service.id}>
-              <span>{service.number}</span>
-              <div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </div>
-              <Link className="icon-link" href={`/services#${service.id}`} aria-label={`Explore ${service.title}`}>
-                <ArrowRight aria-hidden="true" />
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section section-navy">
-        <div className="shell">
-          <SectionHeading
-            index="04"
-            kicker="Featured solutions"
-            title="Focused systems for the workflows growing businesses need to control."
-          />
-          <div className="solutions-grid">
-            {solutions.map(([title, text], index) => {
-              const SolutionIcon = [Layers3, PackageCheck, Workflow, Gauge, Headphones][index % 5];
-              return (
-                <article key={title}>
-                  <SolutionIcon aria-hidden="true" size={22} />
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </article>
-              );
-            })}
-          </div>
-          <Link className="button button-light section-button" href="/solutions">
-            Explore all solutions <ArrowRight aria-hidden="true" size={18} />
-          </Link>
-        </div>
-      </section>
-
-      <section className="section shell">
-        <SectionHeading
-          index="05"
-          kicker="Featured work"
-          title="Project concepts shaped around real operational and support problems."
-          description="Status labels distinguish demonstrations and prototypes from verified company-delivered client work. No fabricated outcomes are presented."
-        />
-        <div className="work-grid">
-          {workItems.map((item) => <WorkCard item={item} key={item.slug} />)}
-        </div>
-        <div className="center-action">
-          <Link className="button button-secondary" href="/work">View all work</Link>
-        </div>
-      </section>
-
-      <section className="section experience-section">
-        <div className="shell">
-          <div className="compact-heading">
-            <p className="kicker">Selected Past Technical &amp; Business Experience</p>
-            <p>Historical work is presented as the founder’s experience and is not implied to have been delivered under the current PK-TANK structure.</p>
-          </div>
-          <div className="experience-grid">
-            {pastExperience.map(([title, status, text]) => (
-              <article key={title}>
-                <span>{status}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section shell">
-        <SectionHeading
-          index="06"
-          kicker="Industries"
-          title="Adaptable technology for businesses where operations, service and technical work overlap."
-        />
-        <div className="industry-mini-grid">
-          {industries.map(([name], index) => (
-            <Link href="/industries" key={name}><span>0{index + 1}</span>{name}<ArrowRight aria-hidden="true" size={16} /></Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="section process-section">
-        <div className="shell">
-          <SectionHeading
-            index="07"
-            kicker="A practical process"
-            title="Understand first. Build what matters. Support what follows."
-          />
-          <div className="process-grid">
-            {[
-              [FileSearch, "Discover", "Clarify the problem, users, current process, constraints and evidence."],
-              [Workflow, "Shape", "Define a practical scope, workflow and delivery path before complexity grows."],
-              [Blocks, "Build", "Implement the system, support structure or project deliverables in focused stages."],
-              [Gauge, "Improve", "Review usage, resolve friction and prioritize the next useful improvement."],
-            ].map(([Icon, title, text], index) => {
-              const ProcessIcon = Icon as typeof FileSearch;
-              return (
-                <article key={title as string}>
-                  <span>0{index + 1}</span>
-                  <ProcessIcon aria-hidden="true" size={25} />
-                  <h3>{title as string}</h3>
-                  <p>{text as string}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section managed-section">
-        <div className="shell managed-grid">
-          <div className="managed-visual" aria-hidden="true">
-            <div className="managed-core"><CloudCog size={36} /><span>Technology<br />Partner</span></div>
-            <span className="managed-chip chip-one">Software</span>
-            <span className="managed-chip chip-two">IT support</span>
-            <span className="managed-chip chip-three">SaaS</span>
-            <span className="managed-chip chip-four">Reporting</span>
-          </div>
-          <div>
-            <p className="eyebrow"><span />Managed monthly support</p>
-            <h2>One Technology Partner for Day-to-Day Needs</h2>
-            <p>Monthly support can combine website and software care, SaaS support, user help, basic network troubleshooting, reports and small improvements.</p>
-            <Link className="button" href="/pricing">Explore managed support <ArrowRight aria-hidden="true" size={18} /></Link>
-          </div>
-        </div>
-      </section>
-
+      <SelectedProjects />
+      <ProcessSteps />
+      <SupportAndIndustries />
       <CtaBand />
     </main>
   );

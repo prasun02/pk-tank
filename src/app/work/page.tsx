@@ -22,7 +22,7 @@ export default function WorkPage() {
       <section className="section shell">
         <WorkFilter items={workItems} />
       </section>
-      <section className="section experience-section">
+      <section className="section experience-section" id="experience">
         <div className="shell">
           <div className="compact-heading">
             <p className="kicker">Selected Past Technical &amp; Business Experience</p>
