@@ -34,7 +34,6 @@ export default function SolutionsPage() {
         eyebrow="Solutions"
         title="Systems and support shaped around operational problems."
         description="Start with the bottleneck: scattered information, slow approvals, repeated support or unclear project work. We shape the technology around that problem."
-        index="01"
         cta
       />
 
@@ -42,7 +41,6 @@ export default function SolutionsPage() {
         <div className="shell">
           <SectionHeading
             variant="compact"
-            index="01"
             kicker="Solution library"
             title="Ten focused solutions, grouped by what they help you run."
           />
@@ -78,7 +76,6 @@ export default function SolutionsPage() {
         <div className="shell">
           <SectionHeading
             variant="compact"
-            index="02"
             kicker="Problem-led scoping"
             title="Start from the problem. We map it to the right answer."
             description="The right first version solves a clear operational problem without unnecessary complexity."
@@ -90,7 +87,7 @@ export default function SolutionsPage() {
       <section className="home-section">
         <div className="shell faq-layout">
           <div>
-            <p className="kicker"><span className="section-number">03</span>Build or improve</p>
+            <p className="kicker">Build or improve</p>
             <h2>New system, existing workflow or SaaS platform?</h2>
             <p>Recommendations depend on workflow, data, integration, responsibility and support requirements.</p>
             <Link className="text-link" href="/contact">

@@ -27,7 +27,6 @@ export default function HomePage() {
         <div className="shell">
           <SectionHeading
             variant="compact"
-            index="01"
             kicker="What we do"
             title="Five core services. One accountable technology partner."
             description="We build the systems your business runs on, then help keep them, and your wider technology, running smoothly."
@@ -45,7 +44,6 @@ export default function HomePage() {
         <div className="shell">
           <SectionHeading
             variant="compact"
-            index="02"
             kicker="Challenge → Solution"
             title="Recognize the problem. See how it gets solved."
             description="Start with what is slowing the business down. Each common challenge maps to a practical answer and the service that delivers it."
@@ -58,7 +56,6 @@ export default function HomePage() {
         <div className="shell">
           <SectionHeading
             variant="compact"
-            index="03"
             kicker="Solutions we build"
             title="Focused systems for the workflows growing businesses depend on."
             action={
@@ -92,7 +89,6 @@ export default function HomePage() {
         <div className="shell">
           <SectionHeading
             variant="compact"
-            index="04"
             kicker="Featured work"
             title="Real interfaces from our projects and prototypes."
             description="Status labels separate demonstrations and prototypes from delivered client work. No outcomes are invented."
@@ -114,7 +110,6 @@ export default function HomePage() {
         <div className="shell">
           <SectionHeading
             variant="compact"
-            index="05"
             kicker="How we work"
             title="Understand first. Build what matters. Support what follows."
           />
@@ -143,7 +138,7 @@ export default function HomePage() {
         <div className="shell">
           <div className="fit-grid">
             <div>
-              <p className="kicker"><span className="section-number">06</span>Where we fit</p>
+              <p className="kicker">Where we fit</p>
               <h2>Built for teams where operations, service and technical work overlap.</h2>
               <p className="fit-intro">Industry context shapes every system: the users, records, decisions and support expectations behind each workflow.</p>
               <p className="fit-label">Industries we support</p>
@@ -183,7 +178,7 @@ export default function HomePage() {
       <section className="home-section section-muted" id="faq">
         <div className="shell faq-layout">
           <div>
-            <p className="kicker"><span className="section-number">07</span>Common questions</p>
+            <p className="kicker">Common questions</p>
             <h2>Quick answers before you get in touch.</h2>
             <p>Still unsure? Describe the situation in plain language and we’ll help clarify the next step.</p>
             <Link className="text-link" href="/contact">

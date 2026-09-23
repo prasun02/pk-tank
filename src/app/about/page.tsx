@@ -28,7 +28,7 @@ const founderFocusAreas = [
 export default function AboutPage() {
   return (
     <main id="main-content">
-      <PageHero eyebrow="About PK-TANK" title="Built From Cross-Functional Technology Experience" description="PK-TANK combines software thinking, technical support, business operations and project experience to solve connected business problems." index="05" cta />
+      <PageHero eyebrow="About PK-TANK" title="Built From Cross-Functional Technology Experience" description="PK-TANK combines software thinking, technical support, business operations and project experience to solve connected business problems." cta />
       <section className="section shell">
         <div className="about-intro">
           <div><p className="kicker">Company first</p><h2>A practical technology company for work that crosses software and operations.</h2></div>
@@ -37,12 +37,12 @@ export default function AboutPage() {
       </section>
       <section className="section section-muted">
         <div className="shell mission-grid">
-          <article><span>01</span><p className="kicker">Mission</p><h2>Reduce friction through practical technology.</h2><p>To help businesses reduce manual work, improve visibility, solve technology problems and execute projects more efficiently through practical and affordable technology.</p></article>
-          <article><span>02</span><p className="kicker">Vision</p><h2>Become a trusted remote-first technology partner.</h2><p>To become a trusted remote-first technology solutions company serving local and international clients through software, SaaS, automation, managed support, technical project services and proprietary digital products.</p></article>
+          <article><p className="kicker">Mission</p><h2>Reduce friction through practical technology.</h2><p>To help businesses reduce manual work, improve visibility, solve technology problems and execute projects more efficiently through practical and affordable technology.</p></article>
+          <article><p className="kicker">Vision</p><h2>Become a trusted remote-first technology partner.</h2><p>To become a trusted remote-first technology solutions company serving local and international clients through software, SaaS, automation, managed support, technical project services and proprietary digital products.</p></article>
         </div>
       </section>
       <section className="section shell">
-        <SectionHeading index="03" kicker="How PK-TANK works" title="Clear scope, honest status and responsibility matched to capability." />
+        <SectionHeading kicker="How PK-TANK works" title="Clear scope, honest status and responsibility matched to capability." />
         <div className="values-grid">
           {[["Practical over impressive", "The useful workflow matters more than unnecessary technical complexity."], ["Evidence over claims", "Projects, experience and results are described with accurate status and without invented metrics."], ["Clarity over ambiguity", "Scope, exclusions, assumptions and responsibilities should be understood before delivery begins."], ["Support beyond launch", "Technology becomes valuable through adoption, documentation, troubleshooting and improvement."]].map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}
         </div>

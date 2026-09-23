@@ -36,7 +36,6 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         eyebrow="Contact"
         title="Tell Us the Problem — Not the Technology"
         description="Describe what is slowing the business down, where information gets lost or what technical work needs clearer support. We’ll start there."
-        index="08"
       />
       <section className="section shell contact-layout">
         <aside>

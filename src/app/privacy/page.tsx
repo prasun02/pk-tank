@@ -14,7 +14,6 @@ export default function PrivacyPage() {
         eyebrow="Privacy"
         title="Privacy Policy"
         description="How PK-TANK collects, uses, stores and protects information submitted through our website."
-        index="06"
       />
       <section className="section shell legal-content">
         <p className="legal-updated">Effective date: 5 September 2026</p>
